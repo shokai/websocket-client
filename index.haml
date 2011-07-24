@@ -1,0 +1,14 @@
+!!! XHTML
+- @title = 'logcat websocket'
+%html
+  %head
+    %title= @title
+    %meta{'http-equiv' => 'Content-Type', :content => 'text/html', :charset => 'UTF-8'}
+    %script{:type => 'text/javascript', :src => "jquery.js"}
+    %script{:type => 'text/javascript', :src => "main.js"}
+  %body
+    %h1= @title
+    %div
+      %input{:id => 'addr', :type => 'text', :value => '192.168.1.2:10007'}
+      %input{:id => 'btn_connect', :type => 'button', :value => 'connect!'}
+    %div#logs

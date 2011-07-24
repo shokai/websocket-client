@@ -22,6 +22,19 @@ var channel = {
     }
 };
 
+var add_panel = function(){
+    var panel = $('<div>').addClass('panel');
+    var input_grep = $('<input>').attr('type','text').addClass('grep').val('.*');
+    var btn_close =  $('<input>').attr('type','button').addClass('btn_close').attr('value','x');
+    var div_ctrls = $('<div>').append('grep : ').append(input_grep).append(btn_close);
+    panel.append(div_ctrls);
+    var div_log = $('<div>').addClass('log');
+    panel.append(div_log);
+    $('div#panels').append(panel);
+    channel.subscribe(function(data){
+        if(data.match(input_grep.val())) div_log.prepend($('<div>').html(data));
+    });
+};
 
 $(function(){
     $('input#btn_connect').click(function(){
@@ -37,12 +50,12 @@ $(function(){
         };
     });
 
-    channel.subscribe(function(e){
-        console.log(e);
+    channel.subscribe(function(data){
+        console.log(data);
     });
 
-    channel.subscribe(function(e){
-        $('#logs').prepend($('<div>').html(e));
-    });
+    $('input#btn_add_panel').click(add_panel);
+
+    add_panel();
 });
 

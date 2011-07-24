@@ -7,7 +7,7 @@ var channel = {
     subscribe : function(callback){
         if(typeof callback == 'function'){
             this.clients.push(callback);
-            return this.clients.length;
+            return this.clients.length-1;
         }
         return null;
     },
@@ -16,6 +16,9 @@ var channel = {
             var callback = this.clients[i];
             if(typeof callback == 'function') this.clients[i](msg);
         }
+    },
+    unsubscribe : function(id){
+        this.clients[id] = null;
     }
 };
 

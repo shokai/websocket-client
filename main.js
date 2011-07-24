@@ -13,7 +13,8 @@ var channel = {
     },
     push : function(msg){
         for(var i = 0; i < this.clients.length; i++){
-            this.clients[i](msg);
+            var callback = this.clients[i];
+            if(typeof callback == 'function') this.clients[i](msg);
         }
     }
 };

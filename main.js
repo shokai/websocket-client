@@ -2,21 +2,21 @@
 var ws;
 var logs = [];
 
-var channel = {};
-channel.clients = [];
-channel.subscribe = function(callback){
-    if(typeof callback == 'function'){
-        this.clients.push(callback);
-        return this.clients.length;
+var channel = {
+    clients : [],
+    subscribe : function(callback){
+        if(typeof callback == 'function'){
+            this.clients.push(callback);
+            return this.clients.length;
+        }
+        return null;
+    },
+    push : function(msg){
+        for(var i = 0; i < this.clients.length; i++){
+            this.clients[i](msg);
+        }
     }
-    return null;
 };
-channel.push = function(msg){
-    for(var i = 0; i < this.clients.length; i++){
-        this.clients[i](msg);
-    }
-};
-
 
 
 $(function(){

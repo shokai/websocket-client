@@ -1,5 +1,16 @@
 
+body, h1{
+    font-size : smaller;
+}
+
+div#panels{
+    background : #CCC;
+}
+
 div#panels div.panel{
+    margin-left : 2px;
+    margin-right : 2px;
+    background-c
     float : left;
     width : 25%;
 }

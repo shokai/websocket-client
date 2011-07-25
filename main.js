@@ -51,7 +51,7 @@ $(function(){
                     btn_connect.val('open!');
                     alert('websocket connection ERROR!');
                 }
-            }, 2000);
+            }, 1500);
             ws.onopen = function(){
                 clearTimeout(tid);
                 console.log('websocket connected!');

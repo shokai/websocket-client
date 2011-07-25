@@ -8,14 +8,18 @@
     <link href='main.css' rel='stylesheet' type='text/css' />
   </head>
   <body>
-    <h1>websocket client</h1>
-    <div>
-      <input id='addr' type='text' value='192.168.1.2:10007' />
-      <input id='btn_connect' type='button' value='open!' />
+    <div id='header'>
+      <h1>websocket client</h1>
+      <div id='ctrls'>
+        <input id='addr' type='text' value='localhost:10007' />
+        <input id='btn_connect' type='button' value='open!' />
+      </div>
     </div>
-    <div id='panel_ctrls'>
-      <input id='btn_add_panel' type='button' value='+' />
+    <div id='contens'>
+      <div id='panel_ctrls'>
+        <input id='btn_add_panel' type='button' value='+' />
+      </div>
+      <div id='panels'></div>
     </div>
-    <div id='panels'></div>
   </body>
 </html>

@@ -1,18 +1,38 @@
 
-body, h1, h2, h3, h4, div, span, p{
-    font-size : smaller;
+html, body, h1, h2, h3, h4, div, span, p{
     margin : 0px;
     padding : 0px;
+    width : 100%;
+    background : #000;
+    color : #FFF;
+    font-size : 97%;
+}
+
+html, body {
+    height: 100%;
+}
+
+h1{
+    font-size : smaller;
+}
+
+div#contens{
 }
 
 div#panels{
-    width : 99%;
+    width : 100%;
     padding : 0px;
     margin : 0px;
 }
 
 div#panels div.panel{
-    border : solid 1px #000;
-    background : ##FFF;
+    padding : 2px;
+    border-top : solid 2px #FFF;
+    border-right : solid 0px #FFF;
+    margin : 0px;
+    background : #000;
+    color : #FFF;
     float : left;
+    overflow : scroll;
 }
+

@@ -81,8 +81,10 @@ $(function(){
 
     add_panel();
     setInterval(function(){
+        var height = $('body').height()-$('#header').height()-$('#panel_ctrls').height()-10;
         var panels = $('div.panel');
-        panels.css('width', 100/panels.length-1+'%');
+        var width = $('body').width()/panels.length-5;
+        panels.css('width', width+'px').css('height', height+'px');
     }, 100);
 });
 

@@ -32,7 +32,7 @@ EM::run do
 
   EM::defer do
     loop do
-      @channel.push STDIN.gets
+      @channel.push STDIN.gets.strip
     end
   end
 end

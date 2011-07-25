@@ -81,9 +81,18 @@ $(function(){
 
     $('input#btn_add_panel').click(add_panel);
 
+    var ws_send = function(){
+        ws.send($('input#send').val());
+        $('input#send').val('');
+    };
+    $('input#btn_send').click(ws_send);
+    $('input#send').keydown(function(e){
+        if(e.keyCode == 13) ws_send();
+    });
+
     add_panel();
     setInterval(function(){
-        var height = $('body').height()-$('#header').height()-$('#panel_ctrls').height()-10;
+        var height = $('body').height()-$('#header').height()-$('#panel_ctrls').height()-30;
         var panels = $('div.panel');
         var width = $('body').width()/panels.length-5;
         panels.css('width', width+'px').css('height', height+'px');

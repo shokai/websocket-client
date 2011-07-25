@@ -40,6 +40,7 @@ var add_panel = function(){
 
 $(function(){
     var btn_connect = $('input#btn_connect');
+    $('#send').hide();
     btn_connect.click(function(){
         if(ws == null || ws.readyState != 1){
             ws = new WebSocket("ws://"+$('input#addr').val());
@@ -53,12 +54,14 @@ $(function(){
                 }
             }, 1500);
             ws.onopen = function(){
+                $('#send').show();
                 clearTimeout(tid);
                 console.log('websocket connected!');
                 btn_connect.val('close?');
                 alert('websocket connected!');
             };
             ws.onclose = function(){
+                $('#send').hide();
                 console.log('websocket closed');
                 btn_connect.val('open!');
                 $('input#addr').removeAttr('disabled');

@@ -38,8 +38,10 @@ var add_panel = function(){
 };
 
 $(function(){
-    var btn_connect = $('input#btn_connect');
     $('#send').hide();
+    if($.cookie('addr')) $('input#addr').val($.cookie('addr'));
+
+    var btn_connect = $('input#btn_connect');
     btn_connect.click(function(){
         if(ws == null || ws.readyState != 1){
             ws = new WebSocket("ws://"+$('input#addr').val());
@@ -54,6 +56,7 @@ $(function(){
             }, 1500);
             ws.onopen = function(){
                 $('#send').show();
+                $.cookie('addr', $('input#addr').val());
                 clearTimeout(tid);
                 console.log('websocket connected!');
                 btn_connect.val('close?');

@@ -33,7 +33,7 @@ var add_panel = function(){
     panel.append(div_log);
     $('div#panels').append(panel);
     channel.subscribe(function(data){
-        if(data.match(input_grep.val())) div_log.prepend($('<div>').html(data));
+        if(data.match(input_grep.val())) div_log.prepend($('<div>').html(data.htmlEscape()));
     });
 };
 

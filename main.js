@@ -1,5 +1,5 @@
 
-var ws;
+var ws = null;
 var logs = [];
 
 var channel = {
@@ -39,17 +39,38 @@ var add_panel = function(){
 };
 
 $(function(){
-    $('input#btn_connect').click(function(){
-        ws = new WebSocket("ws://"+$('input#addr').val());
-        ws.onopen = function(){
-            console.log('websocket connected!');
-        };
-        ws.onclose = function(){
-            console.log('websocket closed');
-        };
-        ws.onmessage = function(e){
-            channel.push(e.data);
-        };
+    var btn_connect = $('input#btn_connect');
+    btn_connect.click(function(){
+        if(ws == null || ws.readyState != 1){
+            ws = new WebSocket("ws://"+$('input#addr').val());
+            btn_connect.val('connecting...');
+            $('input#addr').attr('disabled', 'disabled');
+            var tid = setTimeout(function(){
+                if(ws == null || ws.readyState != 1){
+                    $('input#addr').removeAttr('disabled');
+                    btn_connect.val('open!');
+                    alert('websocket connection ERROR!');
+                }
+            }, 2000);
+            ws.onopen = function(){
+                clearTimeout(tid);
+                console.log('websocket connected!');
+                btn_connect.val('close?');
+                alert('websocket connected!');
+            };
+            ws.onclose = function(){
+                console.log('websocket closed');
+                btn_connect.val('open!');
+                $('input#addr').removeAttr('disabled');
+                alert('websocket closed');
+            };
+            ws.onmessage = function(e){
+                channel.push(e.data);
+            };
+        }
+        else{
+            ws.close();
+        }
     });
 
     channel.subscribe(function(data){
@@ -59,5 +80,9 @@ $(function(){
     $('input#btn_add_panel').click(add_panel);
 
     add_panel();
+    setInterval(function(){
+        var panels = $('div.panel');
+        panels.css('width', 100/panels.length-1+'%');
+    }, 100);
 });
 

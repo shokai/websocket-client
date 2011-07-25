@@ -25,7 +25,9 @@ var channel = {
 var add_panel = function(){
     var panel = $('<div>').addClass('panel');
     var input_grep = $('<input>').attr('type','text').addClass('grep').val('.*');
-    var btn_close =  $('<input>').attr('type','button').addClass('btn_close').attr('value','x');
+    var btn_close =  $('<input>').attr('type','button').addClass('btn_close').attr('value','x').click(function(){
+        panel.remove();
+    });
     var div_ctrls = $('<div>').append('grep : ').append(input_grep).append(btn_close);
     panel.append(div_ctrls);
     var div_log = $('<div>').addClass('log');

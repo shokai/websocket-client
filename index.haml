@@ -11,8 +11,12 @@
     %div#header
       %h1= @title
       %div#ctrls
-        %input{:id => 'addr', :type => 'text', :value => 'localhost:10007'}
-        %input{:id => 'btn_connect', :type => 'button', :value => 'open!'}
+        %div#connect
+          %input{:id => 'addr', :type => 'text', :value => 'localhost:10007'}
+          %input{:id => 'btn_connect', :type => 'button', :value => 'open!'}
+        %div#send
+          %input{:id => 'send', :type => 'text', :value => 'hello'}
+          %input{:id => 'btn_send', :type => 'button', :value => 'send'}
     %div#contens
       %div#panel_ctrls
         %input{:id => 'btn_add_panel', :type => 'button', :value => '+'}

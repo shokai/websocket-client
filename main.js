@@ -1,6 +1,5 @@
 
 var ws = null;
-var logs = [];
 
 var channel = {
     clients : [],

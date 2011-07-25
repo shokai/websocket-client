@@ -1,16 +1,18 @@
 
-body, h1{
+body, h1, h2, h3, h4, div, span, p{
     font-size : smaller;
+    margin : 0px;
+    padding : 0px;
 }
 
 div#panels{
-    background : #CCC;
+    width : 99%;
+    padding : 0px;
+    margin : 0px;
 }
 
 div#panels div.panel{
-    margin-left : 2px;
-    margin-right : 2px;
-    background-c
+    border : solid 1px #000;
+    background : ##FFF;
     float : left;
-    width : 25%;
 }

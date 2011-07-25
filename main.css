@@ -2,7 +2,6 @@
 html, body, h1, h2, h3, h4, div, span, p{
     margin : 0px;
     padding : 0px;
-    width : 100%;
     background : #000;
     color : #FFF;
     font-size : 97%;
@@ -10,6 +9,7 @@ html, body, h1, h2, h3, h4, div, span, p{
 
 html, body {
     height: 100%;
+    width : 100%;
 }
 
 h1{
@@ -17,6 +17,11 @@ h1{
 }
 
 div#contens{
+    clear : both;
+}
+
+div#ctrls div{
+    float : left;
 }
 
 div#panels{
@@ -25,7 +30,7 @@ div#panels{
     margin : 0px;
 }
 
-div#panels div.panel{
+div.panel{
     padding : 2px;
     border-top : solid 2px #FFF;
     border-right : solid 0px #FFF;
@@ -34,5 +39,9 @@ div#panels div.panel{
     color : #FFF;
     float : left;
     overflow : scroll;
+}
+
+.btn_close{
+    float : right;
 }
 
